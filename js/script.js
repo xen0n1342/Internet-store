@@ -1,5 +1,6 @@
-(function($){
+$(document).ready(function($){
     $('.banner-section__slider').slick({
+        arrows: true,
         dots: true,
         prevArrow: '<button type="button" class="slick-prev"><img src="icons/left.svg"></button>',
         nextArrow: '<button type="button" class="slick-next"><img src="icons/right.svg"></button>',
@@ -7,7 +8,19 @@
         mobileFirst: true,
         autoplay: true,
         autoplaySpeed: 2000,
-        speed: 1200
+        speed: 1200,
+        responsive: [
+            {
+              breakpoint: 968,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+              }
+            },
+        ]
+
     });
 
     $('.banner-section__slider-item').slick({
@@ -42,6 +55,8 @@
     tabs('ul.search__tabs', '.search__tab','div.search__content', 'search__tab_active', 'search__content_active', 'div.container' );
     tabs('ul.products__tabs', '.products__tab','.products__content', 'products__tab_active', 'products__content_active', 'div.products__wrapper' );
     tabs('ul.catalog__tabs', '.catalog__tab','.catalog__content', 'catalog__tab_active', 'catalog__content_active', 'div.catalog__wrapper' );
+    tabs('ul.card__tabs', '.card__tab','.card__content', 'card__tab_active', 'card__content_active', 'div.container' );
+    tabs('ul.info__tabs', '.info__tab','.info__content', 'info__tab_active', 'info__content_active', 'div.container' );
 
     $('.products__item__favorite').on('click', function(){
         $($(this)).toggleClass('products__item__favorite_active');
@@ -74,4 +89,16 @@
         $('.products__slider-item__wrapper').addClass('products__slider-item__wrapper_list');
     });
 
-})(jQuery);
+    $('.hamburger').on('click', function(){
+        $('.header__menu__mobile').toggleClass('header__menu__mobile_active');
+        $('.hamburger').toggleClass('hamburger_active');
+    });
+
+  
+    $(".rate-yo").rateYo({
+        ratedFill: "#1C62CD",
+        normalFill: "#C4C4C4",
+        starWidth: "23px",
+        spacing: "7px"
+    });
+});
